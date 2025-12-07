@@ -24,7 +24,9 @@ const AdminHomePage = () => {
     useEffect(() => {
         dispatch(fetchAdminProducts());
         dispatch(fetchAllOrders());
-    }, [dispatch]);  
+    }, [dispatch]); 
+    
+    
 
     return (
         <div className='max-w-7xl mx-auto p-6'>
@@ -74,7 +76,10 @@ const AdminHomePage = () => {
                                 orders.map((order) => (
                                     <tr key={order._id} className='border-b hover:bg-gray-50 cursor-pointer'>
                                         <td className='p-4'>{order._id}</td>
-                                        <td className='p-4'>{order.user.name}</td>
+                                        {/* SOLO CAMBIÉ ESTA LÍNEA: */}
+                                        <td className='p-4'>{order.user?.name || "Usuario no disponible"}</td>
+                                        {/* O si prefieres mantenerlo más similar: */}
+                                        {/* <td className='p-4'>{order.user ? order.user.name : "Usuario no disponible"}</td> */}
                                         <td className='p-4'>{order.totalPrice.toFixed(2)}</td>
                                         <td className='p-4'>{order.status}</td>
                                     </tr>
