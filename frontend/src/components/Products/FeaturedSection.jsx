@@ -12,7 +12,7 @@ const FeaturedSection = () => {
                 </div>
                 <h4 className='tracking-tighter mb-2'>ENVÍO NACIONAL GRATIS</h4>
                 <p className='text-gray-600 text-sm tracking-tighter'>
-                    En todos los pedidos superiores a $100.00
+                    En todos los pedidos superiores a $500.00
                 </p>
             </div>
 

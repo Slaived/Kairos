@@ -28,7 +28,7 @@ const OrderManagement = () => {
 
     return (
         <div className='max-w-7xl mx-auto p-6'>
-            <h2 className="text-2xl font-bold mb-6">Gestión de Orendes</h2>
+            <h2 className="text-2xl font-bold mb-6">Gestión de Órdenes</h2>
 
             <div className='overflow-x-auto shadow-md sm:rounded-lg'>
                 <table className="min-w-full text-left text-gray-500">
@@ -46,16 +46,17 @@ const OrderManagement = () => {
                             orders.map((order) => (
                                 <tr
                                     key={order._id}
-                                    className='border-b hover::bg-gray-50 cursor-pointer'
+                                    className='border-b hover:bg-gray-50 cursor-pointer'
                                 >
                                     <td className="py-4 px-4 font-medium text-gray-900 whitespace-nowrap">
                                         #{order._id}
                                     </td>
-                                    <td className="p-4">{order.user.name}</td>
-                                    <td className="p-4">${order.totalPrice.toFixed(2)}</td>
+                                    {/* LÍNEA 54 CORREGIDA: */}
+                                    <td className="p-4">{order.user?.name || "Usuario no disponible"}</td>
+                                    <td className="p-4">${(order.totalPrice || 0).toFixed(2)}</td>
                                     <td className="p-4">
                                         <select
-                                            value={order.status}
+                                            value={order.status || "Procesando"}
                                             onChange={(e) =>
                                                 handleStatusChange(order._id, e.target.value)
                                             }
@@ -79,8 +80,8 @@ const OrderManagement = () => {
                             ))
                         ) : (
                             <tr>
-                                <td colSpan={5} className='p-4 text-center text-green-500'>
-                                    No se encontraron ordenes.
+                                <td colSpan={5} className='p-4 text-center text-gray-500'>
+                                    No se encontraron órdenes.
                                 </td>
                             </tr>
                         )}
@@ -91,4 +92,4 @@ const OrderManagement = () => {
     )
 }
 
-export default OrderManagement
+export default OrderManagement;

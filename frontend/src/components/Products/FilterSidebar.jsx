@@ -13,10 +13,10 @@ const FilterSidebar = () => {
         material: [],
         brand: [],
         minPrice: 0,
-        maxPrice: 2000,
+        maxPrice: 10000,
     });
 
-    const [priceRange, setPriceRange] = useState([0, 2000]);
+    const [priceRange, setPriceRange] = useState([0, 10000]);
 
     const categories = ["Ropa de la parte superior", "Ropa de la parte inferior"];
 
@@ -68,9 +68,9 @@ const FilterSidebar = () => {
             material: params.material ? params.material.split(",") : [],
             brand: params.brand ? params.brand.split(",") : [],
             minPrice: params.minPrice || 0,
-            maxPrice: params.maxPrice || 2000,
+            maxPrice: params.maxPrice || 10000,
         });
-        setPriceRange([0, params.maxPrice || 2000]);
+        setPriceRange([0, params.maxPrice || 10000]);
     }, [searchParams]);
 
     const handleFilterChange = (e) => {
@@ -235,7 +235,7 @@ const FilterSidebar = () => {
                     type="range"
                     name='priceRange'
                     min={0}
-                    max={2000}
+                    max={10000}
                     value={priceRange[1]}
                     onChange={handlePriceChange}
                     className='w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer'

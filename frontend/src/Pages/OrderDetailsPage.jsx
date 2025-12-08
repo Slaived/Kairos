@@ -71,16 +71,18 @@ const OrderDetailsPage = () => {
                         <table className='min-w-full text-gray-600 mb-4'>
                             <thead className='bg-gray-100'>
                                 <tr>
-                                    <th className='py-2 px-4'>Nombre</th>
-                                    <th className='py-2 px-4'>Precio Unitario</th>
-                                    <th className='py-2 px-4'>Cantidad</th>
-                                    <th className='py-2 px-4'>Total</th>
+                                    {/* ENCABEZADOS CENTRADOS */}
+                                    <th className='py-2 px-4 text-center'>Nombre</th>
+                                    <th className='py-2 px-4 text-center'>Precio Unitario</th>
+                                    <th className='py-2 px-4 text-center'>Cantidad</th>
+                                    <th className='py-2 px-4 text-center'>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {orderDetails.orderItems.map((item) => (
                                     <tr key={item.productId} className='border-b'>
-                                        <td className='py-2 px-4 flex items-center'>
+                                        {/* Columna del nombre con imagen - centrado vertical pero no horizontal */}
+                                        <td className='py-2 px-4 flex items-center justify-center'>
                                             <img
                                                 src={item.image}
                                                 alt={item.name}
@@ -92,9 +94,10 @@ const OrderDetailsPage = () => {
                                                 {item.name}
                                             </Link>
                                         </td>
-                                        <td className="py-2 px-4">${item.price}</td>
-                                        <td className="py-2 px-4">{item.quantity}</td>
-                                        <td className="py-2 px-4">${item.price * item.quantity}</td>
+                                        {/* DATOS CENTRADOS */}
+                                        <td className="py-2 px-4 text-center">${item.price}</td>
+                                        <td className="py-2 px-4 text-center">{item.quantity}</td>
+                                        <td className="py-2 px-4 text-center">${item.price * item.quantity}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -110,4 +113,4 @@ const OrderDetailsPage = () => {
     )
 }
 
-export default OrderDetailsPage
+export default OrderDetailsPage;
